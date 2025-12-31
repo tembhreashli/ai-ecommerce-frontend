@@ -118,7 +118,7 @@ npm run dev
 ### 2. Make Changes
 
 - Write code following standards
-- Test in browser at http://localhost:3000
+- Test in browser at http://localhost:5173
 - Check console for errors/warnings
 
 ### 3. Quality Checks

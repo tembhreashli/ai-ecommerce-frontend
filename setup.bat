@@ -114,7 +114,7 @@ set /p START_SERVER="Would you like to start the development server now? (y/n): 
 if /i "%START_SERVER%"=="y" (
     echo.
     echo Starting development server...
-    echo The application will be available at: http://localhost:3000
+    echo The application will be available at: http://localhost:5173
     echo.
     npm run dev
 )

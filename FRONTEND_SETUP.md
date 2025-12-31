@@ -118,7 +118,7 @@ NODE_ENV=development
 npm run dev
 ```
 
-The application will be available at: **http://localhost:3000**
+The application will be available at: **http://localhost:5173**
 
 ## Environment Configuration
 
@@ -165,7 +165,7 @@ Used for production builds:
 
 ```bash
 # Development
-npm run dev              # Start development server (port 3000)
+npm run dev              # Start development server (port 5173)
 npm run build            # Build for production
 npm run preview          # Preview production build
 
@@ -213,21 +213,21 @@ npm run preview
 
 ### Port Already in Use
 
-If port 3000 is already in use:
+If port 5173 is already in use:
 
 **Option 1**: Kill the process using the port
 ```bash
 # Linux/Mac
-lsof -ti:3000 | xargs kill -9
+lsof -ti:5173 | xargs kill -9
 
 # Windows
-netstat -ano | findstr :3000
+netstat -ano | findstr :5173
 taskkill /PID <PID> /F
 ```
 
 **Option 2**: Use a different port
 ```bash
-npm run dev -- --port 5173
+npm run dev -- --port 3000
 ```
 
 ### Node Version Issues
@@ -267,7 +267,7 @@ If the frontend can't connect to the backend:
 1. Verify backend is running on `http://localhost:8080`
 2. Check `VITE_API_BASE_URL` in `.env.local`
 3. Check for CORS issues in browser console
-4. Ensure backend allows requests from `http://localhost:3000`
+4. Ensure backend allows requests from `http://localhost:5173`
 
 ### Build Failures
 

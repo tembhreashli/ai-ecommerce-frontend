@@ -144,7 +144,7 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo ""
     echo "Starting development server..."
-    echo "The application will be available at: http://localhost:3000"
+    echo "The application will be available at: http://localhost:5173"
     echo ""
     npm run dev
 fi

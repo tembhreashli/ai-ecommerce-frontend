@@ -155,7 +155,7 @@ if (-not $SkipPrompt) {
     if ($response -match '^[Yy]$') {
         Write-Host ""
         Write-Host "Starting development server..."
-        Write-Host "The application will be available at: http://localhost:3000"
+        Write-Host "The application will be available at: http://localhost:5173"
         Write-Host ""
         npm run dev
     }
