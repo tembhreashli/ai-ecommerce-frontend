@@ -12,7 +12,11 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    host: true, // Listen on all addresses including Docker
     open: true,
+    watch: {
+      usePolling: true, // Enable for Docker volumes
+    },
   },
   build: {
     outDir: 'dist',

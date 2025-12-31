@@ -8,7 +8,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "docker:build": "docker build -t ai-ecommerce-frontend:dev .",
+    "docker:build:prod": "docker build -f Dockerfile.prod -t ai-ecommerce-frontend:latest .",
+    "docker:run": "docker run -p 5173:5173 ai-ecommerce-frontend:dev",
+    "docker:run:prod": "docker run -p 80:80 ai-ecommerce-frontend:latest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
@@ -29,8 +37,13 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.32",
+    "prettier": "^3.1.1",
     "tailwindcss": "^3.3.6",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
