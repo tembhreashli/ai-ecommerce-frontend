@@ -3,9 +3,6 @@
 
 FROM node:18-alpine AS base
 
-# Install dependencies for node-gyp
-RUN apk add --no-cache python3 make g++
-
 # Set working directory
 WORKDIR /app
 
