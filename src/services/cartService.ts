@@ -1,5 +1,5 @@
 import api from './api';
-import { Cart, CartItem, ApiResponse } from '../types';
+import { Cart, ApiResponse } from '../types';
 import { STORAGE_KEYS } from '../utils/constants';
 
 /**

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { CartState, Cart, CartItem } from '../types';
+import { CartState, Cart } from '../types';
 import * as cartService from '../services/cartService';
-import { getErrorMessage, calculateCartTotal, calculateCartItemCount } from '../utils/helpers';
+import { getErrorMessage } from '../utils/helpers';
 
 const initialState: CartState = {
   items: [],

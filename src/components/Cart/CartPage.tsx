@@ -10,6 +10,7 @@ const CartPage = () => {
 
   useEffect(() => {
     loadCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClearCart = async () => {

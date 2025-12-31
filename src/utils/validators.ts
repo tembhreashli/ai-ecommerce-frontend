@@ -106,7 +106,9 @@ export const validatePhoneNumber = (phone: string): boolean => {
  * Generic form validator
  */
 export const validateForm = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   values: Record<string, any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   rules: Record<string, (value: any) => string | null>
 ): Record<string, string> => {
   const errors: Record<string, string> = {};
