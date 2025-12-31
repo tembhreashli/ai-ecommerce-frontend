@@ -21,7 +21,7 @@ The frontend communicates with the backend through a REST API:
 ```
 ┌─────────────────┐         ┌──────────────┐         ┌─────────────────┐
 │  React Frontend │ ◄────► │  Axios HTTP  │ ◄────► │  Backend API    │
-│  (Port 3000)    │         │  Client      │         │  (Port 8080)    │
+│  (Port 5173)    │         │  Client      │         │  (Port 8080)    │
 └─────────────────┘         └──────────────┘         └─────────────────┘
 ```
 
