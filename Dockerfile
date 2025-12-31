@@ -1,5 +1,5 @@
 # Development Dockerfile for AI E-Commerce Frontend
-# Multi-stage build with hot reload support
+# Single-stage build with hot reload support
 
 FROM node:18-alpine AS base
 

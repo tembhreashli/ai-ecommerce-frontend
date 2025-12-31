@@ -257,14 +257,28 @@ All services connected via `ai-ecommerce-network`.
 
 ### Environment Variables in Docker Compose
 
-Edit `docker-compose.frontend.yml` or create `.env.docker`:
+Environment variables can be set in two ways:
 
+**Option 1: Create a `.env` file** (recommended):
 ```env
 VITE_API_BASE_URL=http://backend:8080/api
 VITE_DEBUG=false
+VITE_APP_NAME=My E-Commerce
 ```
 
-Docker Compose automatically loads `.env` files.
+Docker Compose automatically loads `.env` files from the current directory.
+
+**Option 2: Override inline defaults**:
+The docker-compose files use default values with `${VAR:-default}` syntax.
+You can override by setting environment variables before running docker-compose:
+
+```bash
+export VITE_API_BASE_URL=http://my-backend:8080/api
+docker-compose -f docker-compose.frontend.yml up
+```
+
+**Option 3: Edit docker-compose.yml directly**:
+Modify the environment values directly in the docker-compose file (not recommended for sensitive data).
 
 ## Advanced Configuration
 
