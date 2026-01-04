@@ -89,7 +89,7 @@ if (-not (Test-Path .env.local)) {
     else {
         Print-Info "No .env.local.example found, creating default .env.local"
         $envContent = @"
-VITE_API_BASE_URL=http://localhost:8080/api
+VITE_API_BASE_URL=http://localhost:9090/api
 VITE_API_TIMEOUT=30000
 VITE_JWT_SECRET=your-local-jwt-secret-key
 VITE_APP_NAME=AI E-Commerce

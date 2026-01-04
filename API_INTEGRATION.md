@@ -21,7 +21,7 @@ The frontend communicates with the backend through a REST API:
 ```
 ┌─────────────────┐         ┌──────────────┐         ┌─────────────────┐
 │  React Frontend │ ◄────► │  Axios HTTP  │ ◄────► │  Backend API    │
-│  (Port 5173)    │         │  Client      │         │  (Port 8080)    │
+│  (Port 5173)    │         │  Client      │         │  (Port 9090)    │
 └─────────────────┘         └──────────────┘         └─────────────────┘
 ```
 
@@ -40,13 +40,13 @@ API configuration is managed through environment variables:
 
 **Local Development** (`.env.local`):
 ```env
-VITE_API_BASE_URL=http://localhost:8080/api
+VITE_API_BASE_URL=http://localhost:9090/api
 VITE_API_TIMEOUT=30000
 ```
 
 **Docker Development** (`.env.docker`):
 ```env
-VITE_API_BASE_URL=http://backend:8080/api
+VITE_API_BASE_URL=http://backend:9090/api
 VITE_API_TIMEOUT=30000
 ```
 
