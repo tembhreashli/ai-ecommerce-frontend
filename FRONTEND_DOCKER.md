@@ -69,7 +69,7 @@ docker run -p 5173:5173 ai-ecommerce-frontend:dev
 With environment variables:
 ```bash
 docker run -p 5173:5173 \
-  -e VITE_API_BASE_URL=http://host.docker.internal:8080/api \
+  -e VITE_API_BASE_URL=http://host.docker.internal:9090/api \
   -e VITE_DEBUG=true \
   ai-ecommerce-frontend:dev
 ```
@@ -122,7 +122,7 @@ This starts:
 - PostgreSQL database (port 5432)
 - Redis cache (port 6379)
 - RabbitMQ (ports 5672, 15672)
-- Backend API (port 8080)
+- Backend API (port 9090)
 - Frontend app (port 5173)
 
 Run in detached mode:
@@ -241,7 +241,7 @@ services:
       - ./public:/app/public
       - /app/node_modules
     environment:
-      - VITE_API_BASE_URL=http://localhost:8080/api
+      - VITE_API_BASE_URL=http://localhost:9090/api
 ```
 
 ### Full Stack Compose (`docker-compose.full.yml`)
@@ -261,7 +261,7 @@ Environment variables can be set in two ways:
 
 **Option 1: Create a `.env` file** (recommended):
 ```env
-VITE_API_BASE_URL=http://backend:8080/api
+VITE_API_BASE_URL=http://backend:9090/api
 VITE_DEBUG=false
 VITE_APP_NAME=My E-Commerce
 ```
@@ -273,7 +273,7 @@ The docker-compose files use default values with `${VAR:-default}` syntax.
 You can override by setting environment variables before running docker-compose:
 
 ```bash
-export VITE_API_BASE_URL=http://my-backend:8080/api
+export VITE_API_BASE_URL=http://my-backend:9090/api
 docker-compose -f docker-compose.frontend.yml up
 ```
 
@@ -337,7 +337,7 @@ If backend is running locally (not in Docker):
 
 ```bash
 docker run -p 5173:5173 \
-  -e VITE_API_BASE_URL=http://host.docker.internal:8080/api \
+  -e VITE_API_BASE_URL=http://host.docker.internal:9090/api \
   ai-ecommerce-frontend:dev
 ```
 
@@ -418,12 +418,12 @@ watch: {
 
 **If backend is in same docker-compose**:
 ```env
-VITE_API_BASE_URL=http://backend:8080/api
+VITE_API_BASE_URL=http://backend:9090/api
 ```
 
 **If backend is on host machine**:
 ```env
-VITE_API_BASE_URL=http://host.docker.internal:8080/api
+VITE_API_BASE_URL=http://host.docker.internal:9090/api
 ```
 
 **If backend is remote**:

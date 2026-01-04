@@ -93,7 +93,7 @@ Edit `.env.local` and update the values:
 
 ```env
 # API Configuration
-VITE_API_BASE_URL=http://localhost:8080/api
+VITE_API_BASE_URL=http://localhost:9090/api
 VITE_API_TIMEOUT=30000
 
 # Authentication
@@ -127,14 +127,14 @@ The application uses different environment configurations for different scenario
 ### Local Development (`.env.local`)
 
 Used when running `npm run dev` locally:
-- Backend API: `http://localhost:8080/api`
+- Backend API: `http://localhost:9090/api`
 - Debug mode: Enabled
 - Connects to locally running backend
 
 ### Docker Development (`.env.docker.example`)
 
 Used in Docker Compose:
-- Backend API: `http://backend:8080/api`
+- Backend API: `http://backend:9090/api`
 - Uses Docker service names for networking
 - Debug mode: Disabled
 
@@ -149,7 +149,7 @@ Used for production builds:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `VITE_API_BASE_URL` | Backend API endpoint | `http://localhost:8080/api` |
+| `VITE_API_BASE_URL` | Backend API endpoint | `http://localhost:9090/api` |
 | `VITE_API_TIMEOUT` | API request timeout (ms) | `30000` |
 | `VITE_JWT_SECRET` | JWT secret key | - |
 | `VITE_APP_NAME` | Application name | `AI E-Commerce` |
@@ -264,7 +264,7 @@ npm install
 
 If the frontend can't connect to the backend:
 
-1. Verify backend is running on `http://localhost:8080`
+1. Verify backend is running on `http://localhost:9090`
 2. Check `VITE_API_BASE_URL` in `.env.local`
 3. Check for CORS issues in browser console
 4. Ensure backend allows requests from `http://localhost:5173`
