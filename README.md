@@ -102,12 +102,137 @@ cp .env.example .env
 
 4. Update environment variables in `.env`:
 ```
-VITE_API_BASE_URL=http://localhost:8000/api
+VITE_API_BASE_URL=http://localhost:9090/api
 VITE_API_TIMEOUT=30000
 VITE_JWT_SECRET=your-jwt-secret-key
 VITE_APP_NAME=AI E-Commerce
 VITE_APP_VERSION=1.0.0
 ```
+
+> **Note**: For local development with an existing backend, use port **9090**. See `.env.local.example` for reference.
+
+## 🐳 Docker Setup
+
+This project supports Docker-based development and deployment. Choose the setup that fits your needs:
+
+### Prerequisites
+
+- Install [Docker Desktop](https://www.docker.com/products/docker-desktop) (includes Docker Compose)
+- Verify installation: `docker --version` and `docker-compose --version`
+
+### Option 1: Frontend Only (with Docker Compose)
+
+Run only the frontend in Docker (useful when you have a backend running locally or remotely):
+
+```bash
+# Start frontend on port 5173
+docker-compose -f docker-compose.frontend.yml up
+
+# Or run in detached mode
+docker-compose -f docker-compose.frontend.yml up -d
+
+# View logs
+docker-compose -f docker-compose.frontend.yml logs -f
+
+# Stop services
+docker-compose -f docker-compose.frontend.yml down
+```
+
+**Configuration**: By default, connects to `http://localhost:9090/api`. Override with environment variables:
+
+```bash
+# Create .env file or use .env.local.example
+VITE_API_BASE_URL=http://localhost:9090/api
+```
+
+### Option 2: Full Stack (Backend + Frontend + Services)
+
+Run the complete application stack including PostgreSQL, Redis, RabbitMQ, backend API, and frontend:
+
+```bash
+# Start all services
+docker-compose -f docker-compose.full.yml up
+
+# Run in detached mode
+docker-compose -f docker-compose.full.yml up -d
+
+# Check service status
+docker-compose -f docker-compose.full.yml ps
+
+# View logs for specific service
+docker-compose -f docker-compose.full.yml logs -f frontend
+docker-compose -f docker-compose.full.yml logs -f backend
+
+# Stop all services
+docker-compose -f docker-compose.full.yml down
+
+# Stop and remove volumes (clean slate)
+docker-compose -f docker-compose.full.yml down -v
+```
+
+**Services included:**
+- **PostgreSQL** (port 5432) - Database
+- **Redis** (port 6379) - Cache
+- **RabbitMQ** (ports 5672, 15672) - Message broker
+- **Backend API** (port 9090) - Spring Boot application
+- **Frontend** (port 5173) - React Vite application
+
+**Configuration**: Frontend automatically connects to backend via Docker network. See `.env.docker.example` for details.
+
+### Option 3: Docker CLI (Development)
+
+Build and run using Docker commands:
+
+```bash
+# Build development image
+npm run docker:build
+
+# Run with environment variables
+docker run -p 5173:5173 \
+  -e VITE_API_BASE_URL=http://host.docker.internal:9090/api \
+  -e VITE_DEBUG=true \
+  ai-ecommerce-frontend:dev
+
+# Run with volume mounts for hot reload
+docker run -p 5173:5173 \
+  -v $(pwd)/src:/app/src \
+  -v $(pwd)/public:/app/public \
+  -v /app/node_modules \
+  ai-ecommerce-frontend:dev
+```
+
+### Option 4: Production Build with Docker
+
+Build and run production-optimized container with Nginx:
+
+```bash
+# Build production image
+npm run docker:build:prod
+
+# Run production container
+docker run -p 80:80 ai-ecommerce-frontend:latest
+```
+
+### Environment Variables for Docker
+
+**Local Development** (`.env.local.example`):
+```env
+VITE_API_BASE_URL=http://localhost:9090/api  # Backend on host machine
+```
+
+**Docker Compose Full Stack** (`.env.docker.example`):
+```env
+VITE_API_BASE_URL=http://backend:9090/api  # Backend via Docker network
+```
+
+**Frontend Only Docker**:
+```env
+VITE_API_BASE_URL=http://localhost:9090/api  # Backend on host
+# OR
+VITE_API_BASE_URL=http://host.docker.internal:9090/api  # Alternative for host backend
+```
+
+> **📖 Detailed Docker Documentation**: See [FRONTEND_DOCKER.md](FRONTEND_DOCKER.md) for comprehensive Docker setup, troubleshooting, and advanced configurations.
 
 ## 🚀 Development
 
@@ -116,7 +241,7 @@ Start the development server:
 npm run dev
 ```
 
-The application will be available at `http://localhost:3000`
+The application will be available at `http://localhost:5173` (Vite default port)
 
 ## 🏗️ Building
 
@@ -206,8 +331,10 @@ The application includes a complete authentication system:
 The application is designed to work with a RESTful API. Configure the API endpoint in your `.env` file:
 
 ```
-VITE_API_BASE_URL=http://localhost:8000/api
+VITE_API_BASE_URL=http://localhost:9090/api
 ```
+
+> **Note**: The backend server runs on port **9090** by default.
 
 ### Expected API Endpoints:
 
